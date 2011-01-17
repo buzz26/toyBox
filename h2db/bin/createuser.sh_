@@ -1,0 +1,25 @@
+#!/bin/sh
+
+JAVA_HOME=/opt/jdk
+#H2_HOME=/opt/h2db
+H2_HOME=../
+H2_DIR=${H2_HOME}/db
+CLASSPATH=${H2_HOME}/classes:${H2_HOME}/lib/*
+
+USER=${1}
+
+if [ $(whoami) != "root" ]; then
+  echo "You are not 'root'. Abort."
+  exit 1
+fi
+
+if [ -z ${USER} ]; then
+  echo "USAGE: ${0} username"
+  exit 1
+fi
+
+G=$(groups ${USER} | cut -d" " -f3- | tr " " ",")
+usermod -G ${G},h2database ${USER}
+chmod 711 /home/${USER}
+echo "${USER} was added to h2database group."
+

@@ -1,0 +1,46 @@
+#!/bin/sh
+
+JAVA_HOME=/opt/jdk
+H2_HOME=/opt/h2db
+#H2_HOME=../
+H2_DIR=${H2_HOME}/db
+CLASSPATH=${H2_HOME}/classes:${H2_HOME}/lib/*
+
+
+#if [ $(whoami) != "root" ]; then
+#  echo "You are not root. Abort."
+#  exit 1
+#fi
+
+INK_PATH=/usr/local/bin
+
+if [ "$1" = "install" ]; then
+  echo "Adding to daemons.."
+  /sbin/chkconfig --add h2database
+  echo "Creating symbolic links.."
+  /bin/ln -s ${H2_HOME}/bin/backup.sh ${INK_PATH}/h2-backup
+  /bin/ln -s ${H2_HOME}/bin/createdb.sh ${INK_PATH}/h2-createdb
+  /bin/ln -s ${H2_HOME}/bin/createuser.sh ${INK_PATH}/h2-createuser
+  /bin/ln -s ${H2_HOME}/bin/tools.sh ${INK_PATH}/h2-tools
+  echo "Creating user.."
+  /usr/sbin/useradd -d ${H2_HOME} h2database 2> /dev/null
+  /bin/chown -R h2database:h2database ${H2_HOME}
+  echo "Fin."
+
+elif [ "$1" = "uninstall" ]; then
+  echo "Removing from daemons.."
+  /sbin/chkconfig --del h2database
+  echo "Removing user .."
+  userdel h2database
+  echo "Removing symbolic links.."
+  rm ${INK_PATH}/h2-backup
+  rm ${INK_PATH}/h2-createdb
+  rm ${INK_PATH}/h2-createuser
+  rm ${INK_PATH}/h2-tools
+  echo "Fin."
+
+else
+  echo "USAGE: $0 (install|uninstall)"
+  exit 1
+fi
+
