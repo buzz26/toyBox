@@ -20,3 +20,10 @@ griffoninaction
 			and 
 		griffon install-plugin uispec4j
 
+
+spring-android
+	http://www.springsource.org/spring-android
+
+	1)subinit.bat
+	2)run.bat jar
+
