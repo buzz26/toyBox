@@ -7,8 +7,10 @@ ref
 
 
 Download
-	1.gnustep-system-0.28.1-setup.exe
-	2.gnustep-core-0.28.1-setup.exe
+	1.GNUstep MSYS System(gnustep-system-0.28.1-setup.exe)
+	2.GNUstep Core(gnustep-core-0.28.1-setup.exe)
+	3.GNUstep Devel(gnustep-devel-1.3.0-setup.exe)(include gcc)
+
 Applications, Frameworks and other Libraries
 	3.SystemPreferences-1.1.0-2-setup.exe
 	4.gorm-1.2.13-1-setup.exe

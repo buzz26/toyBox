@@ -27,3 +27,10 @@ spring-android
 	1)subinit.bat
 	2)run.bat jar
 
+
+h2db
+	h2db centos service setting
+
+
+git-svn
+	git svn setting
