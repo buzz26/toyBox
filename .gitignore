@@ -1,0 +1,23 @@
+*/build/*
+*/staging/*
+*/bin/*
+*/dist/*
+*/target/*
+*/CHANGE ME
+*/.gradle/*
+*/lock
+*/logs/*.log
+*/*.log
+*/*.db
+*/*.iml
+*/*.ipr
+*/*.iws
+*/target
+*/web-app/plugins
+*/web-app/WEB-INF/classes
+*/*.iws
+*/*Db.properties
+*/*Db.script
+*/.settings
+*/eclipse
+*/stacktrace.log

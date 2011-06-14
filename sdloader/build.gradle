@@ -1,0 +1,67 @@
+apply plugin: 'groovy'
+
+def jdkVersion = 1.6
+def enc = 'UTF-8'
+sourceCompatibility = jdkVersion
+targetCompatibility = jdkVersion
+[compileJava, compileGroovy, compileTestJava, compileTestGroovy].each{ it.options.encoding = enc }
+[compileGroovy, compileTestGroovy].each{ it.groovyOptions.encoding = enc }
+
+
+version = "jsp21"
+archivesBaseName = "sdloader"
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-3'
+}
+
+repositories {
+		flatDir(dirs: file("$projectDir/lib"))
+    mavenCentral()
+    //mavenRepo urls: [ "http://msgpack.org/maven2/",
+		//									"http://download.java.net/maven/2/",
+    //                  "http://repository.jboss.org/maven2/",
+    //                  "http://repository.jboss.org/nexus/content/groups/public-jboss/"]
+}
+
+dependencies {
+		groovy group:'org.apache.tomcat', name:'annotations-api', version:'[6.0.32,)'
+		groovy group:'org.apache.tomcat', name:'el-api', version:'[6.0.32,)'
+		groovy group:'org.apache.tomcat', name:'jasper-el', version:'[6.0.32,)'
+		groovy group:'org.apache.tomcat', name:'jasper-jdt', version:'[6.0.29,)'
+		//groovy group:'org.apache.tomcat', name:'jasper', version:'[6.0.32,)'
+		groovy group:'', name:'jasper', version:''
+		groovy group:'org.apache.tomcat', name:'jsp-api', version:'[6.0.32,)'
+		groovy group:'org.apache.tomcat', name:'servlet-api', version:'[6.0.32,)'
+		groovy group:'org.apache.tomcat', name:'tomcat-juli', version:'[7.0.14,)'
+		groovy group:'org.eclipse.jdt.core.compiler', name:'ecj', version:'3.5.1'
+    groovy group:'', name:'swt', version:''
+    groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.0'
+		testCompile 'junit:junit:4.8.1'
+}
+
+sourceSets.main.groovy.srcDirs+='src/main/java'
+sourceSets.main.java.srcDirs=[]
+
+task resCopy<<{
+  ant.copy(todir: "build/classes/main", overwrite: true ) {
+    fileset(dir: "src/main/java", includes: 'sdloader.properties')
+    fileset(dir: "src/main/java", includes: 'version.txt')
+  }
+
+  ant.copy(todir: "build/classes/main/sdloader/resource", overwrite: true ) {
+    fileset(dir: "src/main/java/sdloader/resource")
+  }
+}
+compileJava.dependsOn resCopy
+
+//
+// executable jar need setting
+//
+jar {
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}
+
+manifest.mainAttributes("Main-Class" : "sdloader.SystemTrayOpen")
+
