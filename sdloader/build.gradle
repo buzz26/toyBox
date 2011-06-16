@@ -54,7 +54,7 @@ task resCopy<<{
     fileset(dir: "src/main/java/sdloader/resource")
   }
 }
-compileJava.dependsOn resCopy
+//compileJava.dependsOn resCopy
 
 //
 // executable jar need setting
