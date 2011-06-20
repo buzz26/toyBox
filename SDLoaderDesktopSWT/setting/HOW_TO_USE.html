@@ -1,0 +1,33 @@
+<html><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><body><pre>
+SDLoaderDesktopSWTの使い方
+
+SDLoaderDesktopSWTを使用する前に、次の設定を行います。
+
+・webアプリの配置
+exeと同じ場所にwebappsフォルダを作成し、中にwarファイルもしくは展開済みのWebアプリを配置します。
+
+・application.properties
+アプリケーションの設定ファイルです。exeと同じ場所に配置します。
+現在のところ、2つの設定があります。
+
+title・・・アプリケーションのWindowのタイトルです。
+port・・・SDLoaderで利用するポート番号です。コメントアウトすると、SDLoaderのデフォルトが使用されます。
+
+また、SDLoaderの設定ファイルに記述できるものは、この設定ファイルでも設定可能です。
+
+・viewconfig
+アプリケーションウィンドウ内に表示するタブの設定です。
+exeと同じ場所に、viewconfigというフォルダをつくり、その中にプロパティファイルを作成します。
+１つのプロパティファイルで、1つのタブが作成されます。プロパティファイルには３つの設定を記述します。
+
+buttons・・・ナビゲーションボタン（戻る、リロード、ホーム）を表示するかどうか　trueかfalse
+url・・・はじめにブラウザに表示するURL
+title・・・タブに表示する名称
+
+設定後、exeをダブルクリックして起動します。
+
+・スプラッシュとアイコン
+exeと同じ場所に「splash.bmp」の名前でビットマップを置くと、スプラッシュウィンドウに表示できます。
+また、「windowicon.gif」の名前で16x16のgifを置くと、ウィンドウアイコンとして表示できます。
+
+</pre></body></html>

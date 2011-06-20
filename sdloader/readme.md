@@ -1,4 +1,8 @@
 
+need SWT jar need 3.7 version
+
+
+
 1)http://code.google.com/p/sdloader/downloads/list
 
 	sdloader-src-v0_3_04.zip unzip

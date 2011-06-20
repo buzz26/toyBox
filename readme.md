@@ -1,5 +1,11 @@
 
+SDLoader
+	JENKINS_HOME set BOOT_ROOT/.jenkins version
 
+SDLoaderDesktopSWT
+	swt 3.7.jar use SWT.WEBKIT apply version
+
+--------------------------------------
 groovyserv_wincmp
 	groovyserv master cygwin compile
 	but I use GNUStep gcc using

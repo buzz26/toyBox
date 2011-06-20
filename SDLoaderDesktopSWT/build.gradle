@@ -1,0 +1,62 @@
+apply plugin: 'java'
+
+def jdkVersion = 1.6
+def enc = 'UTF-8'
+sourceCompatibility = jdkVersion
+targetCompatibility = jdkVersion
+[compileJava,compileTestJava].each{ it.options.encoding = enc }
+
+
+version = ""
+archivesBaseName = "SDLoaderDesktopSWT"
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-3'
+}
+
+repositories {
+		flatDir(dirs: file("$projectDir/libs"))
+    mavenCentral()
+    //mavenRepo urls: [ "http://msgpack.org/maven2/",
+		//									"http://download.java.net/maven/2/",
+    //                  "http://repository.jboss.org/maven2/",
+    //                  "http://repository.jboss.org/nexus/content/groups/public-jboss/"]
+}
+
+dependencies {
+    compile group:'', name:'sdloader', version:'jsp21'
+		testCompile 'junit:junit:4.8.1'
+}
+
+/*
+sourceSets.main.java.srcDirs+='src'
+project.processResources.doFirst { task-> 
+	task.project.resourceDirNames +='src'
+}
+*/
+
+manifest.mainAttributes("Main-Class" : "sdloader.desktopswt.DesktopSWTMain")
+
+jar {
+    //from configurations.compile.collect { it.isDirectory() ? it : it.name!="swt.jar" ?: zipTree(it) }
+		destDir = "${buildDir}/libs"
+		srcDir  = "${projectDir}/setting"
+  	ant.mkdir(dir:destDir)
+  	ant.copy(todir: destDir, overwrite: true ) {
+			fileset(dir: srcDir)
+			fileset(dir: "${buildDir}/libs/")
+ 	  	//fileset(dir: srcDir, includes: '*.sh,*.txt,*.bat,*.pdf,*.inf' ,excludes:'autorun.bat,Autorun.inf')
+  	}
+		libsDir="${buildDir}/libs/lib"
+  	ant.mkdir(dir:libsDir)
+  	ant.copy(file:"${projectDir}/libs/sdloader-jsp21.jar" ,todir:libsDir , overwrite: true )
+}
+
+gradle.taskGraph.afterTask{Task task, TaskState state ->
+	if(task.name != "jar")return
+	ant.exec(executable:"exewrap/exewrap.exe") {
+			arg(line:"-i src/main/resources/icon/sdloader.ico -g -e ${buildDir}/libs/SDLoaderDesktopSWT.jar")
+  }
+	ant.delete(file:"${buildDir}/libs/SDLoaderDesktopSWT.jar")
+}

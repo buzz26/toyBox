@@ -1,3 +1,17 @@
+
+apply version groovyserv 0.8
+
+	http://kobo.github.com/groovyserv/
+
+	download
+
+		dist
+
+		src
+
+
+------------------------------------------------------
+
 ref 
 	http://d.hatena.ne.jp/htz/20080806/1218009392
 
