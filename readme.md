@@ -1,9 +1,13 @@
 
 SDLoader
+
 	JENKINS_HOME set BOOT_ROOT/.jenkins version
 
 SDLoaderDesktopSWT
+
 	swt 3.7.jar use SWT.WEBKIT apply version
+
+	(need Safari Browser)
 
 --------------------------------------
 groovyserv_wincmp
