@@ -61,7 +61,7 @@ gradle.taskGraph.afterTask{Task task, TaskState state ->
   }
 	ant.delete(file:"${buildDir}/libs/${archivesBaseName}-${version}.jar")
 
- 	ant.zip(destfile: "${archivesBaseName}-${version}.zip" ) {
+ 	ant.zip(destfile: "${buildDir}/${archivesBaseName}-${version}.zip" ) {
 			fileset(dir: "${buildDir}/libs")
 	}
 }
