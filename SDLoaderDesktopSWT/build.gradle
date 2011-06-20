@@ -7,7 +7,7 @@ targetCompatibility = jdkVersion
 [compileJava,compileTestJava].each{ it.options.encoding = enc }
 
 
-version = ""
+version = "v0_0_10"
 archivesBaseName = "SDLoaderDesktopSWT"
 
 
@@ -54,9 +54,14 @@ jar {
 }
 
 gradle.taskGraph.afterTask{Task task, TaskState state ->
+	println "name="+task.name
 	if(task.name != "jar")return
 	ant.exec(executable:"exewrap/exewrap.exe") {
-			arg(line:"-i src/main/resources/icon/sdloader.ico -g -e ${buildDir}/libs/SDLoaderDesktopSWT.jar")
+			arg(line:"-i src/main/resources/icon/sdloader.ico -g -e ${buildDir}/libs/${archivesBaseName}-${version}.jar")
   }
-	ant.delete(file:"${buildDir}/libs/SDLoaderDesktopSWT.jar")
+	ant.delete(file:"${buildDir}/libs/${archivesBaseName}-${version}.jar")
+
+ 	ant.zip(destfile: "${buildDir}/${archivesBaseName}-${version}.zip" ) {
+			fileset(dir: "${buildDir}/libs")
+	}
 }

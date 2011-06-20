@@ -1,8 +1,0 @@
-:compileJava UP-TO-DATE
-:processResources UP-TO-DATE
-:classes UP-TO-DATE
-:jar
-
-BUILD SUCCESSFUL
-
-Total time: 4.727 secs
