@@ -305,7 +305,11 @@ public class DesktopSWTMain {
 				public void run() {
 					try {
 						System.out.println("startup hook invoke.");
-						ProcessBuilder pb = new ProcessBuilder(startupHook);
+//2011/06/20 kimukou.buzz mod start
+						String[] startupHookArr = startupHook.split(" ");
+						ProcessBuilder pb = new ProcessBuilder(startupHookArr);
+						//ProcessBuilder pb = new ProcessBuilder(startupHook);
+//2011/06/20 kimukou.buzz mod end
 						Process process = pb.start();
 						printProcess(process);
 					} catch (Exception e) {
@@ -326,7 +330,11 @@ public class DesktopSWTMain {
 				public void run() {
 					try {
 						System.out.println("Invoke shutdown hook start.");
-						ProcessBuilder pb = new ProcessBuilder(shutdownHook);
+//2011/06/20 kimukou.buzz mod start
+						String[] shutdownHookArr = shutdownHook.split(" ");
+						ProcessBuilder pb = new ProcessBuilder(shutdownHookArr);
+						//ProcessBuilder pb = new ProcessBuilder(shutdownHook);
+//2011/06/20 kimukou.buzz mod end
 						Process process = pb.start();
 						printProcess(process);
 					} catch (Exception e) {

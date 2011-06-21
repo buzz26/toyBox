@@ -1,11 +1,18 @@
+SDLoader
+
+	google code http://code.google.com/p/sdloader/
 
 SDLoader
 
 	JENKINS_HOME set BOOT_ROOT/.jenkins version
 
+	swt 3.7-M7.jar include version
+
 SDLoaderDesktopSWT
 
-	swt 3.7.jar use SWT.WEBKIT apply version
+	swt 3.7-M7.jar use SWT.WEBKIT apply version
+
+	(dependency SDLoader.jar)
 
 	(need Safari Browser)
 

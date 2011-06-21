@@ -58,9 +58,9 @@ gradle.taskGraph.afterTask{Task task, TaskState state ->
 	if(task.name != "jar")return
 	ant.exec(executable:"exewrap/exewrap.exe") {
 			arg(line:"-i src/main/resources/icon/sdloader.ico -g -e ${buildDir}/libs/${archivesBaseName}-${version}.jar")
-  }
+  	}
 	ant.delete(file:"${buildDir}/libs/${archivesBaseName}-${version}.jar")
-
+	ant.move(file:"${buildDir}/libs/${archivesBaseName}-${version}.exe",tofile:"${buildDir}/libs/${archivesBaseName}.exe")
  	ant.zip(destfile: "${buildDir}/${archivesBaseName}-${version}.zip" ) {
 			fileset(dir: "${buildDir}/libs")
 	}
