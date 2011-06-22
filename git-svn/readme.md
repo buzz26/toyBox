@@ -6,7 +6,12 @@ git-svn for windows setting
 	Git-1.7.4-preview20110204.exe downloading
 
 # installing D:\Tool\Git
-# svnclone.bat edit and run
+
+# IDE using GIT
+	eclipse for EGIT plugins
+
+# svn getting source
+	svnclone.bat edit and run
 
 # source marging
 	svnrebase.bat edit and run
