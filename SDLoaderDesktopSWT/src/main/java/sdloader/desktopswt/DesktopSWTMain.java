@@ -162,6 +162,10 @@ public class DesktopSWTMain {
 	}
 
 	protected void initServer() {
+//2011/06/14 kimukou.buzz add start
+		EnvUtil.setENV();
+		System.out.println("SDLoader[JENKINS_HOME:" + System.getenv("JENKINS_HOME") + "] ");
+//2011/06/14 kimukou.buzz add end
 		server = new SDLoader(true);
 
 		for (Entry<Object, Object> entry : appConfig.getEntryList()) {

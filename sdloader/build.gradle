@@ -1,11 +1,12 @@
-apply plugin: 'groovy'
+apply plugin: 'java'
 
 def jdkVersion = 1.6
 def enc = 'UTF-8'
 sourceCompatibility = jdkVersion
 targetCompatibility = jdkVersion
-[compileJava, compileGroovy, compileTestJava, compileTestGroovy].each{ it.options.encoding = enc }
-[compileGroovy, compileTestGroovy].each{ it.groovyOptions.encoding = enc }
+[compileJava, compileTestJava].each{ it.options.encoding = enc }
+//[compileGroovy, compileTestGroovy].each{ it.options.encoding = enc }
+//[compileGroovy, compileTestGroovy].each{ it.groovyOptions.encoding = enc }
 
 
 version = "jsp21"
@@ -17,33 +18,30 @@ task wrapper(type: Wrapper) {
 }
 
 repositories {
-		flatDir(dirs: file("$projectDir/lib"))
+        flatDir(dirs: file("$projectDir/lib"))
     mavenCentral()
     //mavenRepo urls: [ "http://msgpack.org/maven2/",
-		//									"http://download.java.net/maven/2/",
+        //                                  "http://download.java.net/maven/2/",
     //                  "http://repository.jboss.org/maven2/",
     //                  "http://repository.jboss.org/nexus/content/groups/public-jboss/"]
 }
 
 dependencies {
-		groovy group:'org.apache.tomcat', name:'annotations-api', version:'[6.0.32,)'
-		groovy group:'org.apache.tomcat', name:'el-api', version:'[6.0.32,)'
-		groovy group:'org.apache.tomcat', name:'jasper-el', version:'[6.0.32,)'
-		groovy group:'org.apache.tomcat', name:'jasper-jdt', version:'[6.0.29,)'
-		//groovy group:'org.apache.tomcat', name:'jasper', version:'[6.0.32,)'
-		groovy group:'', name:'jasper', version:''
-		groovy group:'org.apache.tomcat', name:'jsp-api', version:'[6.0.32,)'
-		groovy group:'org.apache.tomcat', name:'servlet-api', version:'[6.0.32,)'
-		groovy group:'org.apache.tomcat', name:'tomcat-juli', version:'[7.0.14,)'
-		groovy group:'org.eclipse.jdt.core.compiler', name:'ecj', version:'3.5.1'
-		groovy group:'', name:'swt', version:''
-		groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.0'
-		testCompile 'junit:junit:4.8.1'
+        compile group:'org.apache.tomcat', name:'annotations-api', version:'[6.0.32,)'
+        compile group:'org.apache.tomcat', name:'el-api', version:'[6.0.32,)'
+        compile group:'org.apache.tomcat', name:'jasper-el', version:'[6.0.32,)'
+        compile group:'org.apache.tomcat', name:'jasper-jdt', version:'[6.0.29,)'
+        //compile group:'org.apache.tomcat', name:'jasper', version:'[6.0.32,)'
+        compile group:'', name:'jasper', version:''
+        compile group:'org.apache.tomcat', name:'jsp-api', version:'[6.0.32,)'
+        compile group:'org.apache.tomcat', name:'servlet-api', version:'[6.0.32,)'
+        compile group:'org.apache.tomcat', name:'tomcat-juli', version:'[7.0.14,)'
+        compile group:'org.eclipse.jdt.core.compiler', name:'ecj', version:'3.5.1'
+        compile group:'', name:'swt', version:''
+        testCompile 'junit:junit:4.8.1'
 }
 
-sourceSets.main.groovy.srcDirs+='src/main/java'
-sourceSets.main.java.srcDirs=[]
-
+/*
 task resCopy<<{
   ant.copy(todir: "build/classes/main", overwrite: true ) {
     fileset(dir: "src/main/java", includes: 'sdloader.properties')
@@ -54,14 +52,29 @@ task resCopy<<{
     fileset(dir: "src/main/java/sdloader/resource")
   }
 }
-//compileJava.dependsOn resCopy
+compileJava.dependsOn resCopy
+*/
 
 //
 // executable jar need setting
 //
+manifest.mainAttributes(
+	'Main-Class' : "sdloader.SystemTrayOpen",
+	'Implementation-Version': version,
+	'Class-Path': "swt.jar"
+)
 jar {
-    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    //from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    from configurations.compile.collect { it.isDirectory() ? it : it.name=="swt.jar" ?: zipTree(it) }
 }
 
-manifest.mainAttributes("Main-Class" : "sdloader.SystemTrayOpen")
+jar.doLast{
+  //swt‚Í¡‰ñ‚æ‚è•Ê“¯«‚Æ‚·‚é
+  ant.copy(todir: "build/libs", overwrite: true ) {
+    fileset(dir: "lib", includes: 'swt.jar')
+  }
+  ant.copy(todir: "../SDLoaderDesktopSWT/libs", overwrite: true ) {
+    fileset(dir: "build/libs", includes: '*.jar')
+  }
+}
 

@@ -205,8 +205,8 @@ public class SDLoader implements Lifecycle {
 	protected void loadDefaultConfig() {
 
 //2011/06/14 kimukou.buzz add start
-		EnvUtil.setENV();
-		SDLoader.log.info("SDLoader[JENKINS_HOME:" + System.getenv("JENKINS_HOME") + "] ");
+//		EnvUtil.setENV();
+//		SDLoader.log.info("SDLoader[JENKINS_HOME:" + System.getenv("JENKINS_HOME") + "] ");
 //2011/06/14 kimukou.buzz add end
 
 		config.setConfig(KEY_SDLOADER_SESSION_MANAGER,

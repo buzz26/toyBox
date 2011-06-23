@@ -1,10 +1,12 @@
-apply plugin: 'java'
+apply plugin: 'groovy'
 
 def jdkVersion = 1.6
 def enc = 'UTF-8'
 sourceCompatibility = jdkVersion
 targetCompatibility = jdkVersion
 [compileJava,compileTestJava].each{ it.options.encoding = enc }
+//[compileGroovy, compileTestGroovy].each{ it.options.encoding = enc }
+//[compileGroovy, compileTestGroovy].each{ it.groovyOptions.encoding = enc }
 
 
 version = "v0_0_10"
@@ -16,52 +18,60 @@ task wrapper(type: Wrapper) {
 }
 
 repositories {
-		flatDir(dirs: file("$projectDir/libs"))
+    flatDir(dirs: file("$projectDir/libs"))
     mavenCentral()
     //mavenRepo urls: [ "http://msgpack.org/maven2/",
-		//									"http://download.java.net/maven/2/",
+    //                  "http://download.java.net/maven/2/",
     //                  "http://repository.jboss.org/maven2/",
     //                  "http://repository.jboss.org/nexus/content/groups/public-jboss/"]
 }
 
 dependencies {
-    compile group:'', name:'sdloader', version:'jsp21'
-		testCompile 'junit:junit:4.8.1'
+    groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.0'
+    groovy group:'', name:'sdloader', version:'jsp21'
+    testCompile 'junit:junit:4.8.1'
 }
+
+sourceSets.main.groovy.srcDirs+='src/main/java'
+sourceSets.main.java.srcDirs=[]
 
 /*
 sourceSets.main.java.srcDirs+='src'
 project.processResources.doFirst { task-> 
-	task.project.resourceDirNames +='src'
+    task.project.resourceDirNames +='src'
 }
 */
 
-manifest.mainAttributes("Main-Class" : "sdloader.desktopswt.DesktopSWTMain")
 
+manifest.mainAttributes("Main-Class" : "sdloader.desktopswt.DesktopSWTMain")
 jar {
-    //from configurations.compile.collect { it.isDirectory() ? it : it.name!="swt.jar" ?: zipTree(it) }
-		destDir = "${buildDir}/libs"
-		srcDir  = "${projectDir}/setting"
-  	ant.mkdir(dir:destDir)
-  	ant.copy(todir: destDir, overwrite: true ) {
-			fileset(dir: srcDir)
-			fileset(dir: "${buildDir}/libs/")
- 	  	//fileset(dir: srcDir, includes: '*.sh,*.txt,*.bat,*.pdf,*.inf' ,excludes:'autorun.bat,Autorun.inf')
-  	}
-		libsDir="${buildDir}/libs/lib"
-  	ant.mkdir(dir:libsDir)
-  	ant.copy(file:"${projectDir}/libs/sdloader-jsp21.jar" ,todir:libsDir , overwrite: true )
+    //from configurations.compile.collect { it.isDirectory() ? it : it.name!="sdloader-jsp21.jar" ?: zipTree(it) }
+    destDir = "${buildDir}/libs"
+    srcDir  = "${projectDir}/setting"
+    ant.mkdir(dir:destDir)
+    ant.copy(todir: destDir, overwrite: true ) {
+        fileset(dir: srcDir)
+        //fileset(dir: srcDir, includes: '*.sh,*.txt,*.bat,*.pdf,*.inf' ,excludes:'autorun.bat,Autorun.inf')
+    }
+
+	//’¼‰º‚ÌlibƒRƒs[
+    libsDir="${buildDir}/libs/lib"
+    ant.mkdir(dir:libsDir)
+    ant.copy(todir: libsDir, overwrite: true ) {
+        fileset(dir: "${projectDir}/libs/")
+	}
 }
 
-gradle.taskGraph.afterTask{Task task, TaskState state ->
-	println "name="+task.name
-	if(task.name != "jar")return
-	ant.exec(executable:"exewrap/exewrap.exe") {
-			arg(line:"-i src/main/resources/icon/sdloader.ico -g -e ${buildDir}/libs/${archivesBaseName}-${version}.jar")
-  	}
-	ant.delete(file:"${buildDir}/libs/${archivesBaseName}-${version}.jar")
-	ant.move(file:"${buildDir}/libs/${archivesBaseName}-${version}.exe",tofile:"${buildDir}/libs/${archivesBaseName}.exe")
- 	ant.zip(destfile: "${buildDir}/${archivesBaseName}-${version}.zip" ) {
-			fileset(dir: "${buildDir}/libs")
-	}
+//gradle.taskGraph.afterTask{Task task, TaskState state ->
+//    println "name="+task.name
+//    if(task.name != "jar")return
+jar.doLast{
+    ant.exec(executable:"exewrap/exewrap.exe") {
+        arg(line:"-i src/main/resources/icon/sdloader.ico -g -e ${buildDir}/libs/${archivesBaseName}-${version}.jar")
+    }
+    ant.delete(file:"${buildDir}/libs/${archivesBaseName}-${version}.jar")
+    ant.move(file:"${buildDir}/libs/${archivesBaseName}-${version}.exe",tofile:"${buildDir}/libs/${archivesBaseName}.exe")
+    ant.zip(destfile: "${buildDir}/${archivesBaseName}-${version}.zip" ) {
+            fileset(dir: "${buildDir}/libs")
+    }
 }
