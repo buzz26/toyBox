@@ -16,5 +16,8 @@ set JAVA_OPTS=-Dgroovy.source.encoding=UTF-8 -Dfile.encoding=UTF-8
 
 call gradle clean 
 pause
-gradle jar > hogehoge.txt 2>&1
 
+:: clean jarで動かすと変な動きをするので一個一個動かす
+:: たぶんタスクが並列で動いていると思う
+::gradle jar > hogehoge.txt 2>&1
+gradle jar

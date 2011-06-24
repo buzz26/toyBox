@@ -1,17 +1,15 @@
+SDLoader original
+	google code http://code.google.com/p/sdloader/
 
-need SWT jar need 3.7 version
+swt 3.7-M7.jar include version(need Safari Browser preInstall)
 
+fatjar(exclude swt.jar)
 
-
-1)http://code.google.com/p/sdloader/downloads/list
-
+# http://code.google.com/p/sdloader/downloads/list
 	sdloader-src-v0_3_04.zip unzip
-
-2)locate src/main/java
-
-3) sdloader-jsp21-v0_3_04.zip unizp
-
-4) enough resource addition
-
-5) gradle compile
+# locate src/main/java
+# sdloader-jsp21-v0_3_04.zip unizp
+# enough resource addition
+# gradle jar
+	automaticary ../SDLoaderDesktopSWT/libs building.jar
 
