@@ -54,20 +54,33 @@ jar {
         //fileset(dir: srcDir, includes: '*.sh,*.txt,*.bat,*.pdf,*.inf' ,excludes:'autorun.bat,Autorun.inf')
     }
 
-	//’¼‰º‚ÌlibƒRƒs[
+    //${projectDir}/libs =>${buildDir}/libs/lib copy
     libsDir="${buildDir}/libs/lib"
     ant.mkdir(dir:libsDir)
     ant.copy(todir: libsDir, overwrite: true ) {
         fileset(dir: "${projectDir}/libs/")
-	}
+    }
 }
 
 //gradle.taskGraph.afterTask{Task task, TaskState state ->
 //    println "name="+task.name
 //    if(task.name != "jar")return
 jar.doLast{
+
+    //see http://www.ne.jp/asahi/web/ryo/exewrap/readme.html
     ant.exec(executable:"exewrap/exewrap.exe") {
-        arg(line:"-i src/main/resources/icon/sdloader.ico -g -e ${buildDir}/libs/${archivesBaseName}-${version}.jar")
+        arg(value:"-i") //icon appoint
+        arg(value:"src/main/resources/icon/sdloader.ico")
+        arg(value:"-g") //console hide
+/*
+        //not good working
+        arg(value:"-a") //vm option
+        arg(value:"-Dfile.encoding=UTF-8")
+        arg(value:"-Dgroovy.source.encoding=UTF-8")
+        arg(value:"-Dsun.jnu.encoding=UTF-8")
+        arg(value:"-e") //extends flag?
+*/
+        arg(value:"${buildDir}/libs/${archivesBaseName}-${version}.jar")
     }
     ant.delete(file:"${buildDir}/libs/${archivesBaseName}-${version}.jar")
     ant.move(file:"${buildDir}/libs/${archivesBaseName}-${version}.exe",tofile:"${buildDir}/libs/${archivesBaseName}.exe")
