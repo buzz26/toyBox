@@ -6,3 +6,5 @@ git svn clone ^
 --trunk=<<SVN-URL>> ^
 --username=<<USER_NAME>> ^
 <<ProjectName>>
+
+git config --system core.autocrlf false
