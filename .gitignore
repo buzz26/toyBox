@@ -1,6 +1,6 @@
 */build/*
 */staging/*
-*/bin/*
+*/bin/*.groovy
 */dist/*
 */target/*
 */CHANGE ME
