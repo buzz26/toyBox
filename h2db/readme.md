@@ -1,3 +1,16 @@
+windows using h2database setting
+
+■Environmental setting
+
+  # cd h2db/bin 
+	# startup.bat
+
+■database creation
+  # cd h2db/bin
+  # createdb.bat testdb
+
+-----------------------------------------
+
 linux using h2database setting
 
 ■Environmental setting
