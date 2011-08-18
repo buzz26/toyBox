@@ -19,3 +19,8 @@ git-svn for windows setting
 # source comiiting svn
 	svndcommit.bat edit and run
 
+# Git.pm
+	git-svn size over error
+	http://t.co/6E2YacI fix infomation Git.pm need
+	location MSYSFIT_HOME\lib\perl5\site_perl 
+	

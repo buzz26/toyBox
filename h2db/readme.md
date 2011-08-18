@@ -9,6 +9,22 @@ windows using h2database setting
   # cd h2db/bin
   # createdb.bat testdb
 
+■hotbackup recovery image
+	# recovery.bat 
+
+
+need script.sql 
+
+		def args =[
+			'-url', ApplicationHolder.application.config.dataSource.url,
+			'-user', ApplicationHolder.application.config.dataSource.username, 
+			'-script',filename,
+			'-options', 'compression','zip'
+		] as String[]
+		org.h2.tools.Script.main(args ) 
+
+		creating job image
+
 -----------------------------------------
 
 linux using h2database setting

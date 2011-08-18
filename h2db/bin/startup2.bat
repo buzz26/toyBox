@@ -38,8 +38,8 @@ set H2_DIR=%H2_HOME%/db
 set CLASSPATH=%H2_HOME%/classes;%H2_HOME%/lib/*
 
 ::#H2 DB Secction
-set TCP_OPTS=-tcp -tcpAllowOthers -tcpPort 9092
-set WEB_OPTS=-web -webAllowOthers -webPort 8082
+set TCP_OPTS=-tcp -tcpAllowOthers -tcpPort 19092
+set WEB_OPTS=-web -webAllowOthers -webPort 18082
 
 set OPTS=%TCP_OPTS% %WEB_OPTS% -baseDir %H2_DIR% -ifExists
 

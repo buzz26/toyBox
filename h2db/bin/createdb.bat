@@ -1,10 +1,6 @@
-::#!/bin/sh
-
-::JAVA_HOME=/opt/jdk
 set JAVA_HOME=c:\opt/jdk
-::H2_HOME=/opt/h2db
-set H2_HOME=../
-set H2_DIR=%H2_HOME%/db
+set H2_HOME=..\
+set H2_DIR=%H2_HOME%\db
 set CLASSPATH=%H2_HOME%/classes;%H2_HOME%/lib/*
 
 
