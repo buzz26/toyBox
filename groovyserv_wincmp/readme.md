@@ -1,13 +1,47 @@
 
-apply version groovyserv 0.8
+apply version groovyserv 0.9
 
 	http://kobo.github.com/groovyserv/
 
 	download
-
 		dist
-
 		src
+
+
+note
+	groovyserv executeCommand using	unix command [exec] 
+	but not exist pure windows.
+	need necessary skipping test
+
+	i think is ant.exec rewrite better.
+
+def executeCommand(command, arguments) {
+    println ">> Executing command..."
+    println "\$ $command ${arguments.join(' ')}"
+    new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+            executable = command
+            args = arguments
+            standardOutput = os
+        }
+        println os.toString()
+    }
+}
+
+=>
+
+def executeCommand(command, arguments) {
+    println ">> Executing command..."
+    println "\$ $command ${arguments.join(' ')}"
+    new ByteArrayOutputStream().withStream { os ->
+				ant.exec(executable:command ,output:'output.log') {
+					arguments.each{arg(value:it)}
+				}
+				os = new File("output.log").getText('UTF-8') 
+        println os.toString()
+    }
+}
+
 
 
 ------------------------------------------------------
@@ -24,7 +58,7 @@ Download
 
 	1.GNUstep MSYS System(gnustep-system-0.28.1-setup.exe)
 
-	2.GNUstep Core(gnustep-core-0.28.1-setup.exe)
+	2.GNUstep Core(gnustep-core-0.28.0-setup.exe)
 
 	3.GNUstep Devel(gnustep-devel-1.3.0-setup.exe)(include gcc)
 

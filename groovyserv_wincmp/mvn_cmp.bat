@@ -10,7 +10,7 @@ set JAVA_OPTIONS=-Dfile.encoding=UTF-8
 ::doskey gcc-3=gcc
 
 set GNUSTEP_HOME=D:\Tooldev/GNUstep
-set GNUSTEP_PATH=%GNUSTEP_HOME%/bin;%GNUSTEP_HOME%/mingw/bin;%GNUSTEP_HOME%/msys/1.0/bin;%GNUSTEP_HOME%/GNUstep/System/Tools
+set GNUSTEP_PATH=%GNUSTEP_HOME%/bin;%GNUSTEP_HOME%/mingw32/bin;%GNUSTEP_HOME%/msys/1.0/bin;%GNUSTEP_HOME%/GNUstep/System/Tools
 ::set PATH=%PATH%;%GNUSTEP_PATH%
 ::set PATH=%PATH%;%GNUSTEP_PATH%;%MVN_HOME%/bin
 set PATH=%GNUSTEP_PATH%;%MVN_HOME%/bin

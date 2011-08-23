@@ -1,0 +1,21 @@
+gradle.projectsLoaded {
+  rootProject.allprojects {
+    buildscript {
+	    repositories {}
+	    dependencies {}
+
+			ant.property(environment:'env')
+
+			ant.properties['env.JAVA_HOME']="c:/opt/jdk"
+			ant.properties['env.GROOVY_HOME']="C:/opt/groovy-1.8.0"
+
+			ant.properties['env.GNUSTEP_HOME']="D:/Tooldev/GNUstep"
+			ant.properties['env.GNUSTEP_PATH']="${ant.properties['env.GNUSTEP_HOME']}/bin;${ant.properties['env.GNUSTEP_HOME']}/mingw32/bin"
+			ant.properties['env.GNUSTEP_PATH']="${ant.properties['env.GNUSTEP_PATH']};${ant.properties['env.GNUSTEP_HOME']}/msys/1.0/bin"
+			ant.properties['env.GNUSTEP_PATH']="${ant.properties['env.GNUSTEP_PATH']};${ant.properties['env.GNUSTEP_HOME']}/GNUstep/System/Tools"
+
+			ant.properties['env.PATH']="${ant.properties['env.GNUSTEP_PATH']};${ant.properties['env.JAVA_HOME']}/bin"
+			println ant.properties['env.PATH']
+		}
+	}
+}
