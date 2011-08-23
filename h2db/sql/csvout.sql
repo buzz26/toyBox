@@ -1,0 +1,1 @@
+CALL CSVWRITE('csvout\alltable.csv', 'SELECT * FROM INFORMATION_SCHEMA.TABLES');

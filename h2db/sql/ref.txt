@@ -1,0 +1,6 @@
+ref doc 
+	http://homepage2.nifty.com/yoks/TechNote/H2/H2_ope3.htm
+	http://d.hatena.ne.jp/ysobj/20100506/1273110821
+
+	http://www.h2database.com/html/grammar.html
+

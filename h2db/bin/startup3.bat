@@ -34,12 +34,13 @@
 set JAVA_HOME=c:\opt/jdk
 set H2_HOME=../
 ::set H2_HOME=/opt/h2db
-set H2_DIR=%H2_HOME%/db
+::set H2_DIR=%H2_HOME%/db
+set H2_DIR=%H2_HOME%/db2
 set CLASSPATH=%H2_HOME%/classes;%H2_HOME%/lib/*
 
 ::#H2 DB Secction
-set TCP_OPTS=-tcp -tcpAllowOthers -tcpPort 39092
-set WEB_OPTS=-web -webAllowOthers -webPort 38082
+set TCP_OPTS=-tcp -tcpAllowOthers -tcpPort 29092
+set WEB_OPTS=-web -webAllowOthers -webPort 28082
 
 set OPTS=%TCP_OPTS% %WEB_OPTS% -baseDir %H2_DIR% -ifExists
 
