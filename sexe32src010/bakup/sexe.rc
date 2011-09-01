@@ -1,0 +1,226 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 日本語 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_SETUP DIALOG DISCARDABLE  0, 0, 210, 233
+STYLE DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "sexe 起動プログラム設定"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    LTEXT           "ファイル(&F)",IDC_STATIC,8,12,51,8
+    EDITTEXT        IDC_EDIT_EXE,8,21,155,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "参照...",IDC_BUTTON_EXE,168,20,34,14
+    LTEXT           "起動時オプション(&O)",IDC_STATIC,8,38,65,8
+    EDITTEXT        IDC_EDIT_OPTION,8,47,155,13,ES_AUTOHSCROLL
+    LTEXT           "名前(&N)",IDC_STATIC,8,81,106,8
+    EDITTEXT        IDC_EDIT_NAME,8,90,195,13,ES_AUTOHSCROLL
+    LTEXT           "説明(&D)",IDC_STATIC,8,107,24,8
+    EDITTEXT        IDC_EDIT_DESCRIPTION,8,117,195,14,ES_AUTOHSCROLL
+    CONTROL         "自動起動(&A)",IDC_CHECK_AUTO,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,8,135,53,10
+    CONTROL         "デスクトップとの対話を許可(&K)",IDC_CHECK_DESKTOP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,68,135,105,10
+    LTEXT           "終了方法(&E)",IDC_STATIC,9,165,40,8
+    COMBOBOX        IDC_COMBO_END,8,176,134,57,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "シャットダウン以外でプログラムが終了したら再起動(&R)",
+                    IDC_CHECK_RETRY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,
+                    194,174,10
+    PUSHBUTTON      "テスト起動(&T)",IDC_BUTTON_TEST,3,215,50,14
+    DEFPUSHBUTTON   "OK",IDOK,101,215,50,14
+    PUSHBUTTON      "キャンセル",IDCANCEL,156,215,50,14
+    GROUPBOX        "プログラム",IDC_STATIC,2,2,205,66
+    GROUPBOX        "サービス",IDC_STATIC,2,71,205,80
+    GROUPBOX        "起動・終了",IDC_STATIC,2,154,205,56
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG_SETUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 206
+        BOTTOMMARGIN, 228
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,0,1,0
+ PRODUCTVERSION 0,0,1,0
+ FILEFLAGSMASK 0x0L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x0L
+ FILETYPE 0x0L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041103a4"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "有限会社軟式\0"
+            VALUE "FileDescription", "sexe\0"
+            VALUE "FileVersion", "0.10\0"
+            VALUE "InternalName", "sexe\0"
+            VALUE "LegalCopyright", "Copyright (C) 2001-2011 takapyu\0"
+            VALUE "LegalTrademarks", " \0"
+            VALUE "OriginalFilename", "sexe.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "sexe\0"
+            VALUE "ProductVersion", "0.10\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x411, 932
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// 24
+//
+
+1                       24      DISCARDABLE     "sexe.exe.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_SEXE           ICON    DISCARDABLE     "sexe.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERROR_NO_SERVICE_NAME "サービス名を指定してください。"
+    IDS_ERROR_NO_PROGRAM_NAME "プログラム名を設定してください。"
+    IDS_ERROR_INSTALL_START "サービス %s を登録しましたが、開始に失敗しました。"
+    IDS_ERROR_INSTALL_SERVICE 
+                            "サービスに登録できませんでした。\nサービスの権限があるユーザーでログインして実行してください。"
+    IDS_ERROR_UNINSTALL_SERVICE 
+                            "サービスから削除できませんでした。\nサービスの権限があるユーザーでログインして実行してください。"
+    IDS_ERROR_NOT_INSTALL_SERVICE "サービス %s は登録されていません。"
+    IDS_ERROR_OS            "Windows NT/2000/XP/Vista/7 で起動してください。"
+    IDS_ERROR_ALREADY_EXECUTE "すでに起動されています。"
+    IDS_ERROR_STOP_SERVICE  "サービスを停止できません。\nサービスの権限のあるユーザーでログインしてください。"
+    IDS_ERROR_NOT_PROGRAM   "プログラムファイルのみ登録可能です。"
+    IDS_QUESTION_INSTALL "サービス %s を登録しますか？"
+    IDS_INSTALL_START_OK "サービス %s を登録し、開始しました。"
+    IDS_INSTALL_OK "サービス %s を登録しました。"
+    IDS_QUESTION_UNINSTALL"サービス %s を削除しますか？"
+    IDS_UNINSTALL_OK "サービス %s を削除しました。"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TEST_EXECUTE        "プログラムを起動しました。\nＯＫをクリックするとプログラムを終了します。\n終了しない場合、手動でプログラムを終了させてください。\n\n※これは sexe からプログラムを終了されられるかどうかのテストで、\n　実際にサービスでの正常動作が保証されるわけではありません\n　のでご注意ください。"
+    IDS_QUESTION_INSTALL_START 
+                            "サービス %s を登録しました。サービスとして起動しますか？"
+    IDS_ITEM_CLOSE          "WM_CLOSE"
+    IDS_ITEM_SYSCOMMAND     "WM_SYSCOMMAND(SC_CLOSE)"
+    IDS_ITEM_SYS_CLOSE      "WM_SYSCOMMAND→WM_CLOSE"
+    IDS_ITEM_CTRL_BREAK     "コンソール(CTRL_BREAK)"
+    IDS_ITEM_CTRL_C     		"コンソール(CTRL_C)" //2011/9/1 kimukou.buzz
+    IDS_BUTTON_DELETE       "削除(&D)"
+    IDS_FILE_EXE            "実行ファイル(*.exe)"
+    IDS_FILE_WILD_EXE       "*.exe"
+    IDS_FILE_TITLE          "実行ファイルの選択"
+    IDS_BUTTON_TEST         "テスト起動(&T)"
+    IDS_ERROR_SAME_SERVICE  "すでに同名のサービスが登録済みです。"
+END
+
+#endif    // 日本語 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

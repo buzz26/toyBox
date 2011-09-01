@@ -22,3 +22,6 @@
 */eclipse
 */stacktrace.log
 */*.txt
+*/Debug
+*/Release
+*/*.user
