@@ -24,12 +24,17 @@
 #define IDS_ITEM_SYSCOMMAND             20
 #define IDS_ITEM_SYS_CLOSE              21
 #define IDS_ITEM_CTRL_BREAK             22
-#define IDS_ITEM_CTRL_C 	            28	//2011/9/1 kimukou.buzz
 #define IDS_BUTTON_DELETE               23
 #define IDS_BUTTON_TEST                 24
 #define IDS_FILE_EXE                    25
 #define IDS_FILE_WILD_EXE               26
 #define IDS_FILE_TITLE                  27
+//2011/9/1 kimukou.buzz
+#define IDS_ITEM_CTRL_C 	            28
+#define IDS_FILE_BAT                    29
+#define IDS_FILE_WILD_BAT               30
+//2011/9/1 kimukou.buzz
+
 #define IDD_DIALOG_SETUP                101
 #define IDI_ICON_SEXE                   102
 #define IDC_EDIT_EXE                    1000

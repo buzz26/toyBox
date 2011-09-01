@@ -200,10 +200,12 @@ BEGIN
     IDS_ITEM_SYSCOMMAND     "WM_SYSCOMMAND(SC_CLOSE)"
     IDS_ITEM_SYS_CLOSE      "WM_SYSCOMMAND→WM_CLOSE"
     IDS_ITEM_CTRL_BREAK     "コンソール(CTRL_BREAK)"
-    IDS_ITEM_CTRL_C         "コンソール(CTRL_C)" //2011/9/1 kimukou.buzz
+    IDS_ITEM_CTRL_C         "コンソール(CTRL_C)"	//2011/9/1 kimukou.buzz
     IDS_BUTTON_DELETE       "削除(&D)"
     IDS_FILE_EXE            "実行ファイル(*.exe)"
     IDS_FILE_WILD_EXE       "*.exe"
+    IDS_FILE_BAT            "実行ファイル(*.bat)"	//2011/9/1 kimukou.buzz
+    IDS_FILE_WILD_BAT       "*.bat"								//2011/9/1 kimukou.buzz
     IDS_FILE_TITLE          "実行ファイルの選択"
     IDS_BUTTON_TEST         "テスト起動(&T)"
     IDS_ERROR_SAME_SERVICE  "すでに同名のサービスが登録済みです。"
