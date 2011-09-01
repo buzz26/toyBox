@@ -545,6 +545,7 @@ void service_control_handler(int control)
 // 2011/9/1 kimukou.buzz
 			}else if(end_pattern == END_CTRL_C) {
 				GenerateConsoleCtrlEvent(CTRL_C_EVENT, process_id);
+				EnumWindows(EnumWindowsProc, END_SYS_AND_CLOSE);
 // 2011/9/1 kimukou.buzz
 			} else {
 				EnumWindows(EnumWindowsProc, end_pattern);
@@ -1143,13 +1144,6 @@ void execute_program(HWND hDlg, TCHAR *exe_name, TCHAR *option_name, int pattern
 	if(pattern == END_CTRL_BREAK || pattern == END_CTRL_C) {
 		FreeConsole();
 	}
-// 2011/9/19 kimukou.buzz
-	
-// 2011/9/19 kimukou.buzz
-//	if(pattern == END_CTRL_C) {
-//		SendMessage((HWND)EnumWindowsProc, WM_SYSCOMMAND, SC_CLOSE, 0);
-//		SendMessage((HWND)EnumWindowsProc, WM_CLOSE, 0, 0);
-//	}
 // 2011/9/19 kimukou.buzz
 }
 
