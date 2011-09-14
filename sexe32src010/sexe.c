@@ -1324,12 +1324,14 @@ BOOL APIENTRY MainFunc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 				*(filter + len + 2) = '\0';
 // 2011/9/1 kimukou.buzz
 				// 実行ファイル(*.bat)\0*.bat\0"
-				int pos = filter + len + 3
+/*
+				char* pos = *(filter + len + 3);
 				LoadString(h_instance, IDS_FILE_BAT, pos, MAX_PATH);
 				len = lstrlen(filter);
 				LoadString(h_instance, IDS_FILE_WILD_BAT, pos + len + 1, MAX_PATH - len - 2);
 				len += lstrlen(pos + len + 1);
 				*(filter + len + 2) = '\0';
+*/
 // 2011/9/1 kimukou.buzz
 				
 				ofn.lpstrFilter = filter;
@@ -1430,7 +1432,7 @@ BOOL APIENTRY MainFunc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		if(!service_install_flag) {
 // 2011/9/1 kimukou.buzz
 			//if(!_tcsicmp(extract_ext(temp), _T("exe"))) {
-			if(!_tcsicmp(extract_ext(temp), _T("exe")) || !_tcsicmp(ext, _T("bat")) ) {
+			if(!_tcsicmp(extract_ext(temp), _T("exe")) || !_tcsicmp(extract_ext(temp), _T("bat")) ) {
 // 2011/9/1 kimukou.buzz
 				TCHAR name[MAX_PATH];
 				// .exe ファイルをセット
