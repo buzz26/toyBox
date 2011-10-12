@@ -1,10 +1,10 @@
-﻿call ../setEnvGG.bat
+call ../setEnvGG.bat
 
 
 call gradle clean 
 pause
 
-:: clean jarで動かすと変な動きをするので一個一個動かす
-:: たぶんタスクが並列で動いていると思う
+:: clean jar runnning strange action.
+:: step by step running need 
 ::gradle jar > hogehoge.txt 2>&1
 gradle jar

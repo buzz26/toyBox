@@ -11,6 +11,10 @@ public class EnvUtil{
 		String val="\"${APPPATH}.jenkins\"".toString()
 		java.lang.ProcessEnvironment.theCaseInsensitiveEnvironment.put(key,val)
 
+		key='HUDSON_HOME'
+		val="\"${APPPATH}.jenkins\"".toString()
+		java.lang.ProcessEnvironment.theCaseInsensitiveEnvironment.put(key,val)
+
 		key='GRAILS_HOME'
 		val="C:/opt/grails-1.3.7".toString()
 		java.lang.ProcessEnvironment.theCaseInsensitiveEnvironment.put(key,val)
