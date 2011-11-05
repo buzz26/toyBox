@@ -1,3 +1,3 @@
 master repo
-	https://github.com/MichaelTamm/operadriver
-	0.4.3
+	https://github.com/operasoftware/operadriver/
+	0.7.3

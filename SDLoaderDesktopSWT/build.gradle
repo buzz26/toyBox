@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.2'
+    groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.3'
     groovy group:'', name:'sdloader', version:'jsp21'
     testCompile 'junit:junit:4.8.1'
 }
