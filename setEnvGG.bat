@@ -1,6 +1,6 @@
 set JAVA_HOME=c:\opt\jdk
 
-set GRADLE_HOME=D:\Tooldev\gradle-1.0-milestone-3
+set GRADLE_HOME=D:\Tooldev\gradle-1.0-milestone-4
 set GIT_HOME=D:\ToolDev\Git
 set MVN_HOME=D:\Tooldev\apache-maven-3.0.3
 set ANT_HOME=D:\Tooldev\ant

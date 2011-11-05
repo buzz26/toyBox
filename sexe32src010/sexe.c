@@ -578,7 +578,9 @@ BOOL execute_process(TCHAR *exe_name, TCHAR *option_name, PROCESS_INFORMATION *p
 	if(end_pattern == END_CTRL_BREAK || end_pattern == END_CTRL_C) {
 // 2011/9/1 kimukou.buzz
 		AllocConsole();
-		create |= CREATE_NEW_PROCESS_GROUP;
+// 2011/9/21 kimukou.buzz comment start
+		//create |= CREATE_NEW_PROCESS_GROUP;
+// 2011/9/21 kimukou.buzz comment end
 	}
 	return CreateProcess(NULL, command, NULL, NULL, FALSE, create, NULL, path, &si, pi);
 }
